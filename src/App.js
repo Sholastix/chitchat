@@ -7,7 +7,6 @@ import Navbar from './components/Navbar/Navbar';
 import Error from './pages/error';
 import Login from './pages/login'
 import Main from './pages/main';
-import Registration from './pages/registration';
 
 const App = () => {
   return (
@@ -16,7 +15,6 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path='/' element={<Main />} />
-          <Route path='/registration' element={<Registration />} />
           <Route path='/login' element={<Login />} />
           <Route path='*' element={<Error />} />
         </Routes>
