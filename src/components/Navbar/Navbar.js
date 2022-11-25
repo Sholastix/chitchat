@@ -1,13 +1,18 @@
 import { Link } from 'react-router-dom';
+import { auth } from '../../config/firebase';
 
-import navbarStyles from './Navbar.module.css';
+import styles from './Navbar.module.css';
 
 const Navbar = () => {
   return (
-    <div className={navbarStyles.container}>
+    <div>
       <Link to='/'>Main</Link>
-      <Link to='/registration'>Registration</Link>
       <Link to='/login'>Login</Link>
+
+      <div>
+        <p>{auth.currentUser?.displayName}</p>
+        <img src={auth.currentUser?.photoURL} />
+      </div>
     </div>
   )
 };
