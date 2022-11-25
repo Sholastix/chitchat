@@ -10,17 +10,15 @@ const Navbar = () => {
   const [user] = useAuthState(auth);
 
   return (
-    <div>
-      <div className='links'>
+    <div className={styles.navbar}>
+      <div className={styles.links}>
         <Link to='/'>Main</Link>
         <Link to='/login'>Login</Link>
+        <button onClick={() => auth.signOut()}>LogOut</button>
       </div>
-      <div className='user'>
+      <div className={styles.user}>
         <p>{user?.displayName}</p>
         <img src={user?.photoURL} />
-      </div>
-      <div>
-        <button onClick={() => auth.signOut()}>LogOut</button>
       </div>
     </div>
   )

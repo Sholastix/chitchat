@@ -1,0 +1,46 @@
+.navbar {
+  align-items: center;
+  background-color: lightgray;
+  display: flex;
+  height: 10vh;
+  justify-content: flex-end;
+  width: 100vw;
+}
+
+.navbar .links {
+  margin-right: 5rem;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.navbar .links a {
+  margin-right: 1rem;
+  text-decoration: none;
+}
+
+.navbar .links a:hover {
+  border-bottom: 0.3rem solid black;
+}
+
+.navbar .links button {
+  font-size: 2rem;
+  padding: 0.5rem;
+}
+
+.navbar .user {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar .user p {
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+.navbar .user img {
+  border-radius: 50%;
+  height: 5rem;
+  margin: 0 1rem;
+  width: 5rem;
+}
