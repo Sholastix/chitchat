@@ -14,12 +14,19 @@
 }
 
 .navbar .links a {
+  color: black;
+  border-bottom: 0.3rem solid transparent;
   margin-right: 1rem;
   text-decoration: none;
+  transition: border-color 0.5s;
 }
 
 .navbar .links a:hover {
-  border-bottom: 0.3rem solid black;
+  border-color: black;
+}
+
+.navbar .links a:visited {
+  color: black;
 }
 
 .navbar .links button {
