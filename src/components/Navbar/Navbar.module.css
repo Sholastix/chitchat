@@ -16,7 +16,7 @@
 .navbar .links a {
   color: black;
   border-bottom: 0.3rem solid transparent;
-  margin-right: 1rem;
+  margin-right: 2rem;
   text-decoration: none;
   transition: border-color 0.5s;
 }
@@ -27,11 +27,6 @@
 
 .navbar .links a:visited {
   color: black;
-}
-
-.navbar .links button {
-  font-size: 2rem;
-  padding: 0.5rem;
 }
 
 .navbar .user {
@@ -50,4 +45,11 @@
   height: 5rem;
   margin: 0 1rem;
   width: 5rem;
+}
+
+.navbar .user button {
+  cursor: pointer;
+  font-size: 1.5rem;
+  margin: 0 1rem;
+  padding: 0.5rem;
 }

@@ -6,6 +6,7 @@ import { signOut } from 'firebase/auth';
 
 import { auth } from '../../config/firebase';
 import styles from './Navbar.module.css';
+import { Fragment } from 'react';
 
 const Navbar = () => {
   // 'useAuthState()' hook automatically updates 'user' variable, when we try to login with new account.
@@ -20,11 +21,15 @@ const Navbar = () => {
       <div className={styles.links}>
         <Link to='/'>Main</Link>
         <Link to='/login'>Login</Link>
-        <button onClick={() => signOutFromAccount()}>LogOut</button>
       </div>
       <div className={styles.user}>
-        <p>{user?.displayName}</p>
-        <img src={user?.photoURL} alt='' />
+        {user && (
+          <Fragment>
+            <p>{user?.displayName}</p>
+            <img src={user?.photoURL} alt='' />
+            <button onClick={() => signOutFromAccount()}>LogOut</button>
+          </Fragment>
+        )}
       </div>
     </div>
   )
