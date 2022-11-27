@@ -1,15 +1,15 @@
+import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-// Hook for authomatic logout from current account and login with new account.
+// Hook for authomatic re-login with new account.
 import { useAuthState } from 'react-firebase-hooks/auth';
 // Import from Firebase native method for sign out.
 import { signOut } from 'firebase/auth';
 
-import { auth } from '../../config/firebase';
 import styles from './Navbar.module.css';
-import { Fragment } from 'react';
+import { auth } from '../../config/firebase';
 
 const Navbar = () => {
-  // 'useAuthState()' hook automatically updates 'user' variable, when we try to login with new account.
+  // 'useAuthState()' hook automatically updates 'user' variable, when we try to re-login with new account.
   const [user] = useAuthState(auth);
 
   const signOutFromAccount = async () => {
@@ -20,7 +20,7 @@ const Navbar = () => {
     <div className={styles.navbar}>
       <div className={styles.links}>
         <Link to='/'>Main</Link>
-        <Link to='/login'>Login</Link>
+        {!user ? <Link to='/login'>Login</Link> : <Link to='/posts'>Create Post</Link>}
       </div>
       <div className={styles.user}>
         {user && (

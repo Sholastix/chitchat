@@ -7,6 +7,7 @@ import Navbar from './components/Navbar/Navbar';
 import Error from './pages/error';
 import Login from './pages/login'
 import Main from './pages/main';
+import Posts from './pages/posts/posts';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/posts' element={<Posts />} />
           <Route path='*' element={<Error />} />
         </Routes>
       </Router>
