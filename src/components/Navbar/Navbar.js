@@ -20,7 +20,7 @@ const Navbar = () => {
     <div className={styles.navbar}>
       <div className={styles.links}>
         <Link to='/'>Main</Link>
-        {!user ? <Link to='/login'>Login</Link> : <Link to='/posts'>Create Post</Link>}
+        {!user ? <Link to='/login'>Login</Link> : <Link to='/post-create'>Create Post</Link>}
       </div>
       <div className={styles.user}>
         {user && (

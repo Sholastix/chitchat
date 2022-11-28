@@ -7,7 +7,7 @@ import Navbar from './components/Navbar/Navbar';
 import Error from './pages/error';
 import Login from './pages/login'
 import Main from './pages/main';
-import Posts from './pages/posts/posts';
+import CreatePost from './pages/post/post-create';
 
 const App = () => {
   return (
@@ -17,7 +17,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/posts' element={<Posts />} />
+          <Route path='/post-create' element={<CreatePost />} />
           <Route path='*' element={<Error />} />
         </Routes>
       </Router>
