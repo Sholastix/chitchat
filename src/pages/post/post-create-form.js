@@ -8,11 +8,14 @@ import { addDoc, collection } from 'firebase/firestore';
 import { auth, db } from '../../config/firebase';
 // Hook for authomatic re-login with new account (this time only to get username).
 import { useAuthState } from 'react-firebase-hooks/auth';
+// Hook for redirecting.
+import { useNavigate } from 'react-router-dom';
 
 import styles from './post-create-form.module.css';
 
 const PostCreateForm = () => {
   const [user] = useAuthState(auth);
+  const navigate = useNavigate();
 
   // Create the validation schema for our posts with help of 'yup'.
   const schema = yup.object().shape({
@@ -21,7 +24,7 @@ const PostCreateForm = () => {
   });
 
   const { register, handleSubmit, formState: { errors } } = useForm({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   });
 
   // Creating reference to our collection.
@@ -30,17 +33,19 @@ const PostCreateForm = () => {
   const onPostCreate = async (data) => {
     await addDoc(postsRef, {
       description: data.description,
-      id: user?.uid,
+      userId: user?.uid,
       title: data.title,
       username: user?.displayName,
     });
+
+    navigate('/');
   };
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onPostCreate)}>
-      <p>{errors.title?.message}</p>
+      <p className={styles.error}>{errors.title?.message}</p>
       <input placeholder='Add the title here...' {...register('title')} />
-      <p>{errors.description?.message}</p>
+      <p className={styles.error}>{errors.description?.message}</p>
       <textarea placeholder='Add the description here...' {...register('description')} />
       <input type='submit' />
     </form>
