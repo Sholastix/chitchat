@@ -27,7 +27,7 @@ const PostCreateForm = () => {
     resolver: yupResolver(schema),
   });
 
-  // Creating reference to our collection.
+  // Creating reference to our 'posts' collection.
   const postsRef = collection(db, 'posts');
 
   const onPostCreate = async (data) => {

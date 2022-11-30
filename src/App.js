@@ -4,9 +4,9 @@ import './App.css';
 
 import Navbar from './components/Navbar/Navbar';
 
-import Error from './pages/error';
-import Login from './pages/login'
-import Main from './pages/main';
+import Error from './pages/error/error';
+import Login from './pages/login/login'
+import Main from './pages/main/main';
 import CreatePost from './pages/post/post-create';
 
 const App = () => {

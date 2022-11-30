@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getDocs, collection } from 'firebase/firestore';
-import { db } from '../config/firebase';
+import { db } from '../../config/firebase';
 
 const Main = () => {
   // Setting the state for our posts list.

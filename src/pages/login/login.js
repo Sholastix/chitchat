@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 // Import native method for sign in from Firebase.
 import { signInWithPopup } from 'firebase/auth';
 // Import our config settings.
-import { auth, provider } from '../config/firebase';
+import { auth, provider } from '../../config/firebase';
 
 const Login = () => {
   const navigate = useNavigate();
