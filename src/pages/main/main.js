@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { getDocs, collection } from 'firebase/firestore';
+
 import { db } from '../../config/firebase';
+import Post from './post';
 
 const Main = () => {
   // Setting the state for our posts list.
@@ -25,11 +27,7 @@ const Main = () => {
     <div>
       {postsList?.map((post) => {
         return (
-          <div key={post.id}>
-            <h3>{post.title}</h3>
-            <h3>{post.description}</h3>
-            <h3>@{post.username}</h3>
-          </div>
+          <Post key={post.id} post={post}/>
         )
       })}
     </div>
