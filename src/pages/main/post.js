@@ -11,28 +11,30 @@ const Post = (props) => {
     getLikes();
   }, []);
 
-  const [likes, setLikes] = useState(null);
+  const [likes, setLikes] = useState([]);
 
   const [user] = useAuthState(auth);
   // Creating reference to our 'likes' collection.
   const likesRef = collection(db, 'likes');
   // Creating a query to database with help of native Firestore method 'where()'.
-  // Here we specifying for docs which we want to retrieve from database.
+  // Here we specifying docs which we want to retrieve from database.
   const likesDoc = query(likesRef, where('postId', '==', post.id))
 
   const getLikes = async () => {
     const result = await getDocs(likesDoc);
-    setLikes(result.docs.length);
+    setLikes(result.docs.map((doc) => ({ userId: doc.data().userId })));
   };
 
-  const createLike = async () => {
+  const addLike = async () => {
     await addDoc(likesRef, {
       postId: post.id,
       userId: user?.uid,
     });
-
-    setLikes(likes + 1);
   };
+
+  const isUserLikedThis = likes?.find((like) => {
+    return like.userId === user?.uid;
+  });
 
   return (
     <div>
@@ -44,8 +46,8 @@ const Post = (props) => {
       </div>
       <div>
         <p>@{post.username}</p>
-        <button onClick={() => { createLike() }}> &#x1F44D; </button>
-        {likes && <p>Likes: {likes}</p>}
+        <button onClick={addLike}> {isUserLikedThis ? <>&#x1F44E;</> : <>&#x1F44D;</>} </button>
+        <p>Likes: {likes?.length} </p>
       </div>
     </div>
   )
