@@ -4,6 +4,8 @@ import { signInWithPopup } from 'firebase/auth';
 // Import our config settings.
 import { auth, provider } from '../../config/firebase';
 
+import styles from './login.module.css';
+
 const Login = () => {
   const navigate = useNavigate();
 
