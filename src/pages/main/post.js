@@ -3,6 +3,7 @@ import { addDoc, collection, deleteDoc, doc, getDocs, query, where } from 'fireb
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 import { auth, db } from '../../config/firebase';
+
 import styles from './post.module.css';
 
 const Post = (props) => {

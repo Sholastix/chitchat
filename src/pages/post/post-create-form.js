@@ -44,10 +44,10 @@ const PostCreateForm = () => {
   return (
     <form className={styles.form} onSubmit={handleSubmit(onPostCreate)}>
       <p className={styles.error}>{errors.title?.message}</p>
-      <input placeholder='Add the title here...' {...register('title')} />
+      <input className={styles.title} placeholder='Add the title here...' {...register('title')} />
       <p className={styles.error}>{errors.description?.message}</p>
-      <textarea placeholder='Add the description here...' {...register('description')} />
-      <input type='submit' />
+      <textarea className={styles.description} placeholder='Add the description here...' {...register('description')} />
+      <input className={styles.submit} type='submit' />
     </form>
   )
 };

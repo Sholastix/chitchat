@@ -1,7 +1,41 @@
-.form input {
-  margin: 5rem 2rem;
+.form {
+  background-color: lightgrey;
+  border-radius: 0.5rem;
+  display: grid;
+  justify-content: center;
+  margin: 10rem 50rem 0 50rem;
+  padding: 0 4rem;
 }
 
-.form p {
+.form .title {
+  height: 3rem;
+  justify-self: center;
+  margin: 5rem 2rem;
+  padding-left: 0.5rem;
+  width: 30rem;
+}
+
+.form .description {
+  height: 20rem;
+  padding: 0.5rem 0.5rem;
+  width: 40rem;
+}
+
+.form .submit {
+  background-color: white;
+  border-radius: 0.5rem;
+  height: 3rem;
+  justify-self: center;
+  margin: 5rem 2rem;
+  width: 10rem;
+}
+
+.form .submit:hover {
+  background-color: lightgreen;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.error {
   color: red;
 }

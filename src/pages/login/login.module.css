@@ -1,0 +1,16 @@
+.title {
+  margin-top: 10rem;
+}
+
+.signin {
+  background-color: lightgray;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.signin:hover {
+  background-color: lightgreen;
+  cursor: pointer;
+  transition: all 0.3s;
+}
