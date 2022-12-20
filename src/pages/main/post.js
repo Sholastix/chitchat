@@ -55,14 +55,10 @@ const Post = (props) => {
 
   return (
     <div>
-      <div>
+      <div className={styles.postContainer}>
         <h3>{post.title}</h3>
-      </div>
-      <div>
         <p>{post.description}</p>
-      </div>
-      <div>
-        <p>@{post.username}</p>
+        <p>@{post.username}, {post.date}</p>
         <button onClick={isUserLikedThis ? deleteLike : addLike}> {isUserLikedThis ? <>&#x1F44E;</> : <>&#x1F44D;</>} </button>
         <p>Likes: {likes?.length} </p>
       </div>
