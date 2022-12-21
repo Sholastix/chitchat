@@ -32,7 +32,7 @@ const PostCreateForm = () => {
 
   const onPostCreate = async (data) => {
     await addDoc(postsRef, {
-      date: Date(),
+      createdAt: Date(),
       description: data.description,
       title: data.title,
       userId: user?.uid,
