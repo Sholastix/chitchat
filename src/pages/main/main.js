@@ -6,6 +6,8 @@ import { auth, db } from '../../config/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Post from './post';
 
+import styles from './main.module.css';
+
 const Main = () => {
   // Setting the state for our posts list.
   const [postsList, setPostsList] = useState(null);
@@ -29,20 +31,19 @@ const Main = () => {
         id: doc.id,
       })));
     } catch (err) {
-      const date = new Date();
-      console.log(`UNATHORIZED ACCESS!: ${date.toUTCString()}`);
+      console.error(`getPostsList(): ${err}`);
     };
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       {user ?
         postsList?.map((post) => {
           return (
             <Post key={post.id} post={post} />
           )
         }) :
-        <p>Dear visitor, please identify yourself here <Link to='/login'>Login</Link> <br></br> Without that step you can't use our awesome app!</p>}
+        <h1>Dear visitor, please identify yourself here: <Link to='/login'>Login</Link> <br></br> Without that step you can't use our awesome app!</h1>}
     </div>
   )
 };
