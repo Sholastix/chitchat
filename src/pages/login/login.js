@@ -12,6 +12,7 @@ const Login = () => {
 
   const signInWithGoogle = async () => {
     await signInWithPopup(auth, provider);
+    // Redirect to main page after login.
     navigate('/');
   };
 

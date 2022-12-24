@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { getDocs, collection, orderBy, query } from 'firebase/firestore';
 
-import { db } from '../../config/firebase';
+import { auth, db } from '../../config/firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import Post from './post';
 
 const Main = () => {
   // Setting the state for our posts list.
   const [postsList, setPostsList] = useState(null);
+  const [user] = useAuthState(auth);
 
   useEffect(() => {
     getPostsList();
@@ -18,21 +21,28 @@ const Main = () => {
   const postsDoc = query(postsRef, orderBy('createdAt', 'asc'));
 
   const getPostsList = async () => {
-    const result = await getDocs(postsDoc);
-    setPostsList(result.docs.map((doc) => ({
-      ...doc.data(),
-      // Specify each post's ID for future, when we set the unique key for each post. 
-      id: doc.id,
-    })));
+    try {
+      const result = await getDocs(postsDoc);
+      setPostsList(result.docs.map((doc) => ({
+        ...doc.data(),
+        // Specify each post's ID for future, when we set the unique key for each post. 
+        id: doc.id,
+      })));
+    } catch (err) {
+      const date = new Date();
+      console.log(`UNATHORIZED ACCESS!: ${date.toUTCString()}`);
+    };
   };
 
   return (
     <div>
-      {postsList?.map((post) => {
-        return (
-          <Post key={post.id} post={post}/>
-        )
-      })}
+      {user ?
+        postsList?.map((post) => {
+          return (
+            <Post key={post.id} post={post} />
+          )
+        }) :
+        <p>Dear visitor, please identify yourself here <Link to='/login'>Login</Link> <br></br> Without that step you can't use our awesome app!</p>}
     </div>
   )
 };

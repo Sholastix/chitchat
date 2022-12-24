@@ -14,8 +14,9 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const signOutFromAccount = async () => {
-    await signOut(auth);
-    navigate('/login');
+      await signOut(auth);
+      // Redirect to login page after logout.
+      navigate('/login');
   };
 
   return (
